@@ -9,4 +9,10 @@ public class ArrayUtil {
         System.out.println();
     }
 
+    public static void showArray(int[][] arr) {
+        for(int[] a: arr) {
+            showArray(a);
+        }
+    }
+
 }
