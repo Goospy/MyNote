@@ -2,12 +2,18 @@ package com.goospy.sort;
 
 import com.goospy.util.ArrayUtil;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Goospy on 2019/10/2 in Hong Xin Jin Fu
  */
 public class QuickSort {
 
     public static void main(String[] args) {
+        List<Integer> list = new ArrayList<>();
+        list.sort(Integer::compare);
+
         QuickSort sort = new QuickSort();
         int[] a = {2, 7, 1, 4, 9};
         sort.qs(a, 0, a.length - 1);
