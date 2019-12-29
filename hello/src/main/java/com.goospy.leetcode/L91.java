@@ -13,34 +13,25 @@ public class L91 {
     }
 
     public int numDecodings(String s) {
-        if(s.equals("0")) {
+        if(s.charAt(0) == '0') {
             return 0;
         }
-
-        StringBuilder stringBuilder = new StringBuilder();
-        boolean lastZeroGet = false;
-        for(int i = 0; i < s.length(); i++) {
-
-        }
-        s = s.substring(s.indexOf('0'), s.lastIndexOf('0'));
-        count(0, s);
-        return count;
-    }
-
-    private void count(int cur, String s) {
-        if(cur == s.length()) {
-            count++;
-            return ;
-        }
-
-        count(cur+1, s);
-
-        if(cur < s.length() - 1) {
-            String sub = s.substring(cur, cur + 2);
-            if(sub.compareTo("11") >= 0 && sub.compareTo("26") <= 0 && !sub.equals("20")) {
-                count(cur+2, s);
+        int pre = 1, cur = 1;
+        for(int i = 1; i < s.length(); i++) {
+            int temp = cur;
+            if(s.charAt(i) == '0') {
+                if(s.charAt(i - 1) == '1' || s.charAt(i - 1) == '2') {
+                    cur = pre;
+                } else {
+                    return 0;
+                }
+            } else if(s.charAt(i - 1) == '1' || (s.charAt(i - 1) == '2' && s.charAt(i) <= '6' && s.charAt(i) >= '0')) {
+                cur = cur + pre;
             }
+            pre = temp;
         }
+
+        return cur;
     }
 
 }
